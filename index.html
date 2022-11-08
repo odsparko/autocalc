@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Автокалькулятор</title>
+    
+  </head>
+  <body>
+
+<div class="container-fluid">
+    <div class="row mt-3">
+        <div class="col-lg-6">
+            <form id="formCalc">
+                <div class="form-group row">
+                    <label for="user" class="col-sm-4 col-form-label">Автомобиль ввозит</label>
+
+                    <div class="col-sm-8">
+                        <select id="user" name="user" class="form-control" required="">
+                            <option value="1">Физическое лицо</option>
+                            <option value="2">Юридическое лицо</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Select Basic -->
+                <div class="form-group row">
+                    <label for="age" class="col-sm-4 col-form-label">Возраст автомобиля</label>
+
+                    <div class="col-sm-8">
+                        <select id="age" name="age" class="form-control" required="">
+                            <option value="1">до 3 лет</option>
+                            <option value="3">от 3 до 5 лет</option>
+                            <option value="5">от 5 до 7 лет</option>
+                            <option value="7">более 7 лет</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="engine" class="col-sm-4 col-form-label">Тип двигателя</label>
+
+                    <div class="col-sm-8">
+                        <select id="engine" name="engine" class="form-control" required="">
+                            <option value="1">Бензиновый</option>
+                            <option value="2">Дизельный</option>
+                            <option value="3">Гибридный</option>
+                            <option value="4">Электрический</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group row">
+                    <label for="power" class="col-sm-4 col-form-label">Мощность двигателя</label>
+
+                    <div class="col-sm-8 input-group">
+                        <input id="power" name="power" type="text" class="form-control" required="" />
+                        <div class="input-group-append">
+                            <select id="power_type" name="power_type" class="form-control input-group-text">
+                                <option value="1">ЛС</option>
+                                <option value="2">кВт</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!-- Appended Input-->
+                <div class="form-group row" id="divengine">
+                    <label for="vol" class="col-sm-4 col-form-label">Объем двигателя</label>
+
+                    <div class="col-sm-8 input-group">
+                        <input id="vol" name="vol" class="form-control" placeholder="" type="text" required="" />
+                        <div class="input-group-append">
+                            <span class="input-group-text">см<sup>3</sup></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Select Basic -->
+                <div class="form-group row">
+                    <label for="auction" class="col-sm-4 col-form-label">Аукцион</label>
+
+                    <div class="col-sm-8">
+                        <select id="auction" name="auction" class="form-control"> </select>
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group row">
+                    <label for="price" class="col-sm-4 col-form-label">Цена на аукционе</label>
+
+                    <div class="col-sm-8 input-group">
+                        <input id="price" name="price" type="text" class="form-control" required="" />
+                        <div class="input-group-append">
+                            <select id="currency" name="currency" class="form-control input-group-text">
+                                <option value="1">&euro;</option>
+                                <option value="2">$</option>
+                                <option value="3">&#8381;</option>
+                                <option value="4" selected>&#165;</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="glonas" class="col-sm-4 col-form-label">Доп. оборудование</label>
+                    <div class="col-sm-8">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="glonas" name="glonas" />
+                            <label class="form-check-label" for="glonas">
+                                «ЭРА-ГЛОНАСС»
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Button -->
+                <div class="form-group row">
+                    <div class="col-sm-4 col-form-label" for="calcbtn"></div>
+                    <div class="col-sm-8">
+                        <div class="form-group row">
+                            <div class="col">
+                                <button name="calcbtn" id="calcbtn" class="btn btn-primary">Рассчитать</button>
+                            </div>
+                            <div class="col">
+                                <small id="tcurrent" class="form-text text-muted"></small>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-lg-6 table-responsive">
+            <div id="table_result" style="display: none;">
+                <table  class="table  table-sm">
+                    <thead>
+                        <tr>
+                            <th scope="col-4"></th>
+                            <th scope="col-4" id="tcurrency"></th>
+                            <th scope="col-4">Руб.</th>
+
+                        </tr>
+                    </thead>
+                    <tbody id="result">
+                        
+                    </tbody>
+                </table>
+                <div><small>
+                    Расчет проведен на общую стоимость в городе Владивосток.<br>
+                    Курс валют взят из Центрального банка Российской Федерации.<br>
+                    Просим Вас обратить внимание на стоимость фрахта, с отдаленных портов (расходы могут быть дороже) уточняйте детали у менеджера. Расчет является ориентировочным исключительно в целях справочной информации!<br>
+                    МЫ ОТПРАВЛЯЕМ АВТОМОБИЛИ ПО ВСЕЙ СТРАНЕ, СТОИМОСТЬ ДОСТАВКИ В РЕГИОНЫ ПРОСИМ УТОЧНЯТЬ У МЕНЕДЖЕРА.</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="calc.js?v=2"></script>
+  </body>
+</html>

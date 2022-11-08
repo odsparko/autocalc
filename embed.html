@@ -1,0 +1,6 @@
+<iframe id="autocalc" width="100%" height="500" frameborder="0" scrolling="no" src="https://10-10-10.ru/autocalc/"></iframe>
+<script>
+    window.addEventListener('message', function(e) {
+        document.getElementById('autocalc').style.height = e.data.height + 'px'
+    })
+</script>
