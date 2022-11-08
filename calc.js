@@ -8,7 +8,7 @@ function sendHeight (){
     function getData(submit) {
         var formCalc = $('#formCalc').serialize();
 
-        $.get("calc.php?"+formCalc,
+        $.get("/calc.php?"+formCalc,
            function(data) {
            //console.log(data);
              $('#auction').html(data.auc_select);

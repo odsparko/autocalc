@@ -1,5 +1,5 @@
 <?php
-require_once("functions.php");
+require_once("/functions.php");
 
 $user       = ($_REQUEST['user'] && in_array((int)$_REQUEST['user'], [1,2])) ? (int)$_REQUEST['user'] : 1;
 $age        = ($_REQUEST['age'] && in_array((int)$_REQUEST['age'], [1,3,5,7])) ? (int)$_REQUEST['age'] : 3;
